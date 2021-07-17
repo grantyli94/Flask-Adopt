@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Pets {% endblock %}
+
+{% block content %}
+
+<h1>Pets</h1>
+
+<ul>
+    {% for pet in pets %}
+    
+    <li>
+      <img src='{{ pet.photo_url }}' width="200" height="200">
+      <a href='/pet/{{ pet.id }}'>{{ pet.name }}</a> is <b>available!</b>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href='/add'><button >Add a Pet</button></a>
+
+<h1>Unavailable Pets</h1>
+
+<ul>
+  {% for pet in unavailable_pets %}
+  
+  <li>
+    <img src='{{ pet.photo_url }}' width="200" height="200">
+    {{ pet.name }}
+  </li>
+  {% endfor %}
+</ul>
+
+<h1>Random Petfinder Pet</h1>
+<img src='{{ random_pet["url"] }}'>
+<p>{{ random_pet["name"] }}</p>
+<p>{{ random_pet["age"] }}</p>
+
+{% endblock %}
